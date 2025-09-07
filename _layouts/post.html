@@ -19,6 +19,24 @@ layout: default
     {{ content }}
   </div>
 
+  {% if page.series %}
+  <hr>
+  <h3>Other posts in this series:</h3>
+  <ul>
+    {% assign series_posts = site.posts | where: "series", page.series | sort: "part" %}
+    {% for sp in series_posts %}
+      <li>
+        {% if sp.url == page.url %}
+          <strong>{{ sp.title }}</strong> <!-- current post -->
+        {% else %}
+          <a href="{{ sp.url }}">{{ sp.title }}</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+
   {%- if site.disqus.shortname -%}
     {%- include disqus_comments.html -%}
   {%- endif -%}

@@ -36,9 +36,9 @@ plugins:
   - jekyll-seo-tag
 
 defaults:
- - scope:
-    path: ""
-    type: "posts"
+  - scope:
+      path: ""
+      type: "posts"
     values:
       permalink: /blog/:slug
 
